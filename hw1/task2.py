@@ -10,9 +10,10 @@
 
 # Користувач має доступ тільки якщо is_permission дорівнює True і is_active також дорівнює True
 
-is_active = input("Is the user active? ")
-is_admin = input("Is the user administrator? ")
-is_permission = input("Does the user have access? ")
+is_active = bool(input("Is the user active? "))
+is_admin = bool(input("Is the user administrator? "))
+is_permission = bool(input("Does the user have access? "))
 # пуста строка -> False
-access =
+access = is_permission and is_active or is_admin
+print(access)
 

@@ -15,18 +15,17 @@
 
 num = int(input("Enter a number: "))
 
-if :
-    if num % 2 == 1:
-        result =
+if num > 0:
+    if num % 2:
+        result = 'Positive odd number'
     else:
-        result =
-elif :
-    result =
+        result = 'Positive even number'
+elif num < 0:
+    result = 'Negative number'
 else:
-    result =
+    result = 'It is zero'
 
 print(result)
-
 
 # 3 -> 3 % 2 -> 1
 # 5 -> 5 % 2 -> 1
