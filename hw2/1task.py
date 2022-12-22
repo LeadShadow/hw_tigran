@@ -5,7 +5,11 @@ message = f"Never argue with stupid people, they will drag you down to their lev
 search = "r"
 result = 0
 for i in message:
+    if search == i:
+        result += 1
 
+
+print(result)
 
 
 
