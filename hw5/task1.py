@@ -4,3 +4,18 @@
 # - Розділити (перше на друге). В інших випадках повернути рядок
 # "Невідома операція".
 
+
+def arifmetic(a: int, b: int, op) -> None:
+    if op == '*':
+        print(a * b)
+    if op == '+':
+        print(a + b)
+    if op == '-':
+        print(a - b)
+    if op == '/':
+        print(a / b)
+    else:
+        print('Невідома операція')
+
+
+arifmetic(5, 10, '+')
