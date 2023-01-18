@@ -19,7 +19,7 @@ print(empty_dict)
 print(another_dict)
 
 some_dict = {
-    'key': 'value',
+    'name': 'Oleksandr',
     1: 'one'
 }
 print(some_dict)
