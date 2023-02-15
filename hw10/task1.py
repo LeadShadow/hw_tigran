@@ -4,6 +4,9 @@
 # 60b90c2e13067a15887e1ae3,Barsik,2
 # 60b90c3b13067a15887e1ae4,Simon,12
 # 60b90c4613067a15887e1ae5,Tessi,5
+# 60b90c4613067a15887e1ae5,Tessi,5
+# 60b90c4613067a15887e1ae5,Tessi,5
+# 60b90c4613067a15887e1ae5,Tessi,5
 # Каждая запись состоит из трех частей и начинается с новой строки. Например, для первой записи
 # начало 60b90c1c13067a15887e1ae1 —
 # это первичный ключ базы данных MongoDB. Он всегда содержит 12 байт или ровно 24 символа.
@@ -27,7 +30,15 @@
 # прочтите содержимое файла, используя режим "r".
 # мы используем менеджер контекста with
 # верните из функции список кошек из файла в требуемом формате
+from pathlib import Path
 
-
+p = Path('test.txt')
 def get_cats_info(path):
-    pass
+    with open(path, 'r', encoding='utf-8') as file:
+        list_1 = []
+        for line in file:
+            list_1.append(dict(zip(['id', 'name', 'age'], line.strip().split(','))))
+    return list_1
+
+
+print(get_cats_info(p))
