@@ -16,3 +16,20 @@
 # Функция должна возвращать первое найденное искомое слово. Если слово не найдено, вернуть пустую строку.
 
 # К І Т Р Н У Г С
+# (1, 2, 3) -> [::-1] -> (3, 2, 1)
+
+# string = 'cat'
+# print(string.find('c')) -> 0
+# string = 'concat'
+# print(string.rfind('c')) -> 2
+def solve_riddle(riddle: str, word_length: int, start_letter: str, reverse=False):
+    if reverse:
+        riddle = riddle[::-1]
+        pos = riddle.rfind(start_letter, 0, len(riddle) - word_length)
+    else:
+        pos = riddle.find(start_letter, 0, len(riddle) - word_length)
+    return '' if pos == -1 else riddle[pos:pos + word_length]  # [pos:pos + word_length] -> [0:0+3] -> КІТ
+
+
+if __name__ == "__main__":
+    print(solve_riddle('СОБАКАРНУГС', 6, 'С'))
