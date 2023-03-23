@@ -10,3 +10,14 @@ from pathlib import Path
 import re
 
 def sanitize_file(source: Path, output: str):
+    with open(source, 'r', encoding='utf-8') as file:
+        string_read = file.read()
+        print(string_read)
+        string = re.sub(r'\d', '', string_read)
+        print(string)
+    with open(output, 'w', encoding='utf-8') as file:
+        file.write(string)
+
+
+if __name__ == "__main__":
+    sanitize_file('test.txt', 'test1.txt')
