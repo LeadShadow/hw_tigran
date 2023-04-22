@@ -19,3 +19,46 @@
 # Для отладки удобно создать тестовый список users и заполнить его самостоятельно.
 # Функция выводит пользователей с днями рождения на неделю вперед от текущего дня.
 # Неделя начинается с понедельника.
+from datetime import datetime, timedelta
+users = [
+    {
+        'name': 'Sasha',
+        'birthday': '2000-04-20'
+    },
+    {
+        'name': 'Tigran',
+        'birthday': '2000-04-21'
+    }
+]
+
+def get_birthdays_per_week(users: list[dict]):
+    result = {}
+    date_now = datetime.now()
+    for dc in users:
+        birthday = dc.get('birthday', None)
+        birthday = datetime.strptime(birthday, "%Y-%m-%d")
+        other_birthday = birthday.replace(year=date_now.year)
+        difference = other_birthday.date() - date_now.date()
+        if timedelta(-1) <= difference <= timedelta(7):
+            day = datetime.weekday(other_birthday)
+            if day == 0 or day == 5 or day == 6:
+                day_week = 'Monday'
+            elif day == 1:
+                day_week = 'Tuesday'
+            elif day == 2:
+                day_week = 'Wednesday'
+            elif day == 3:
+                day_week = 'Thursday'
+            else:
+                day_week = 'Friday'
+            for k, v in dc.items():
+                result.update({day_week: dc.get('name')})
+    return result
+
+def get_beauty_print(dict: dict):
+    string = ''
+    for k, v in dict.items():
+        string += f'{k}: {v}' + '\n'
+    return string
+
+print(get_beauty_print(get_birthdays_per_week(users)))
