@@ -24,3 +24,22 @@
 # Декоратор должен добавлять для коротких номеров префикс +38, а для полного международного
 # номера (из 12 символом) — только знак +. Реализуйте декоратор format_phone_number для
 # функции sanitize_phone_number с необходимым функционалом.
+
+def format_phone_number(func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        if len(result) == 12:
+            return '+' + result
+        else:
+            return '+38' + result
+    return wrapper
+
+
+@format_phone_number
+def sanitize_phone_number(phone: str):
+    new_phone = (phone.strip().removeprefix('+').replace('(', '').replace(')', '').replace('-', '').replace(' ', ''))
+    return new_phone
+
+
+if __name__ == "__main__":
+    print(sanitize_phone_number('(050)8889900'))
